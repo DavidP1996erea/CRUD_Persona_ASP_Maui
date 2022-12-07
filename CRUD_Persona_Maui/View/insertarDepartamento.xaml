@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUD_Persona_Maui.View.insertarDepartamento"
+             xmlns:model="clr-namespace:CRUD_Persona_Maui.Model.ViewModel.InsertarDepartamento"
+             Title="insertarDepartamento">
+
+
+    <ContentPage.BindingContext>
+        <model:clsInsertarDepartamentoVM>
+            
+        </model:clsInsertarDepartamentoVM>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout VerticalOptions="Center" Margin="0,0,0,90">
+
+        <HorizontalStackLayout>
+            <Label Margin="5,10,0,0" Text="Nombre: "></Label>
+            <Border WidthRequest="300" StrokeShape="RoundRectangle 40">
+                <Entry Margin="10,0,0,0" Text="{Binding DepartamentoInsertar.Nombre}" WidthRequest="200"></Entry>
+            </Border>
+        </HorizontalStackLayout>
+        
+        
+        <!-- Se crea el botón para guardar los cambios, que está bindeado al command que hará el proceso -->
+        <Button Command="{Binding InsertarDepartamentoCommand}" Margin="0,50,0,0" Text="Insertar " WidthRequest="100" HeightRequest="50"></Button>
+
+    </VerticalStackLayout>
+</ContentPage>

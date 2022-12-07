@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUD_Persona_Maui.View.editarDepartamento"
+             xmlns:model="clr-namespace:CRUD_Persona_Maui.Model.ViewModel.EditarDepartamento"
+             Title="editarDepartamento">
+
+    <ContentPage.BindingContext>
+        <model:clsEditarDepartamentoVM>
+            
+        </model:clsEditarDepartamentoVM>
+    </ContentPage.BindingContext>
+
+
+    <VerticalStackLayout VerticalOptions="Center" Margin="0,0,0,90">
+
+        <Border WidthRequest="300" StrokeShape="RoundRectangle 40">
+
+            <Entry Margin="10" Text="{Binding DepartamentoRecogido.Nombre}"></Entry>
+
+        </Border>
+        
+        <!-- Botón para guardar los cambios -->
+
+        <Button Command="{Binding EditarDepartamentoCommand}"  Margin="0,100,0,0" Text="Guardar " WidthRequest="100" HeightRequest="50" ></Button>
+        
+    </VerticalStackLayout>
+</ContentPage>

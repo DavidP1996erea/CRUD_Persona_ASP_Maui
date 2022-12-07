@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUD_Persona_Maui.View.editarPersonas"
+             xmlns:model ="clr-namespace:CRUD_Persona_Maui.Model.ViewModel.EditarPersona"
+             Title="editarPersonas">
+
+    <!-- Se bindea esta vista con el viewModel de editarPersonaVM -->
+
+    <ContentPage.BindingContext>
+
+        <model:clsEditarPersonaVM></model:clsEditarPersonaVM>
+    </ContentPage.BindingContext>
+    
+    
+    <VerticalStackLayout Margin="40">
+       
+        <!-- Entrys donde el usuario podrá escribir y editar a la persona -->
+        <Border WidthRequest="300" StrokeShape="RoundRectangle 40" >
+            <Editor 
+            AutoSize="TextChanges" 
+            FontAutoScalingEnabled="True"
+            Margin="10"
+            Text="{Binding PersonaRecogida.Nombre}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+        </Border>
+
+        <Border WidthRequest="300" StrokeShape="RoundRectangle 40">
+            <Editor 
+            AutoSize="TextChanges" 
+            FontAutoScalingEnabled="True"
+            Margin="10"
+            Text="{Binding PersonaRecogida.Apellidos}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+        </Border>
+        <Border WidthRequest="300" StrokeShape="RoundRectangle 40">    
+        <Editor 
+            AutoSize="TextChanges" 
+            FontAutoScalingEnabled="True"
+            Margin="10"
+            Text="{Binding PersonaRecogida.Telefono}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+        </Border>
+        <Border WidthRequest="300" StrokeShape="RoundRectangle 40">
+            <Editor 
+            AutoSize="TextChanges" 
+            FontAutoScalingEnabled="True"
+            Margin="10"    
+            Text="{Binding PersonaRecogida.Direccion}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+        </Border>
+      
+            <DatePicker
+            Margin="20,0,0,0"
+            Date="{Binding PersonaRecogida.FechaNacimiento}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+        
+     
+        <Image Source="{Binding PersonaRecogida.Foto}" WidthRequest="100" HeightRequest="100"/>
+     
+        
+        <!-- Se crea el listado seleccionable, primero se le dice que lista debe coger los datos,
+             luego se pone que atributo debe mostrar y por último se le pone el valor por 
+             defecto que muestra
+        -->
+       
+        <Picker 
+            x:Name="seleccionDepartamento"
+            ItemsSource="{Binding ListaDepartamentosCompleta}"
+            ItemDisplayBinding="{Binding Nombre}"
+            SelectedIndex="{Binding MostrarDepartamento}"
+            SelectedItem="{Binding DepartamentoRecogido}"
+            Margin="0,20,0,0"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            />
+        
+
+        <!-- Se crea el botón para guardar los cambios, que está bindeado al command que hará el proceso -->
+        <Button Command="{Binding EditarPersonaCommand}" Margin="0,100,0,0" Text="Guardar " WidthRequest="100" HeightRequest="50"></Button>
+
+    </VerticalStackLayout>
+</ContentPage>

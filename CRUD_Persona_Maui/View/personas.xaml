@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:CRUD_Persona_Maui.Model.ViewModel.ListadoPersonas"
+             x:Class="CRUD_Persona_Maui.View.personas">
+
+
+    <!-- Binding con el ViewModel -->
+    <ContentPage.BindingContext>
+
+        <model:clsListaPersonasVM></model:clsListaPersonasVM>
+        
+    </ContentPage.BindingContext>
+    
+    
+    <ScrollView>
+        <StackLayout>
+            <!-- Entry que servirá para buscar una persona en la lista -->
+            <HorizontalStackLayout Margin="15">
+            <Border>
+            <Entry Text="{Binding BuscarPersona}" WidthRequest="300"></Entry>
+            </Border>
+
+                <Image Source="buscar.png" WidthRequest="50" HeightRequest="50"></Image>    
+            </HorizontalStackLayout>
+            <!-- Se crea la lista de personas -->
+            <ListView 
+                
+                      RowHeight="60" ItemsSource="{Binding ListaCompletaPersonasVM}" WidthRequest="370" HeightRequest="400"
+                      SelectedItem="{Binding PersonaSeleccionada}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+                            <StackLayout Margin="5">
+
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Nombre}" ></Label>
+                                    <Label Margin="5,0,0,0" Text="{Binding Apellidos}" ></Label>
+                                </HorizontalStackLayout>
+                                
+                                    <Label Text="{Binding Telefono}" ></Label>
+                                   
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <!-- Se crean los botones para manejar a las personas -->
+            <HorizontalStackLayout>
+                <ImageButton Command="{Binding IrEditarPersonasCommand}" Margin="30,0,0,0" Source="editar.png" WidthRequest="30" HeightRequest="30"></ImageButton>
+                <ImageButton Command="{Binding BorrarPersonCommand}" Margin="30,0,0,0" Source="borrar.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"></ImageButton>
+                <ImageButton Command="{Binding IrInsertarPersonasCommand}" Margin="190,0,0,0" Source="agregar.png" WidthRequest="30" HeightRequest="30"></ImageButton>
+
+            </HorizontalStackLayout>
+            
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>

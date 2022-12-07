@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CRUD_Persona_Maui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CRUD_Persona_Maui.View"
+    Shell.FlyoutBehavior="Disabled">
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        
+
+            <ShellContent
+        Title="Personas"
+        ContentTemplate="{DataTemplate local:personas }"
+        Route="personas" />
+
+     
+
+          <ShellContent
+        Title="departamentos"
+        ContentTemplate="{DataTemplate local:departamentos}"
+        Route="departamentos" />
+
+        
+        
+    </FlyoutItem>
+    
+</Shell>

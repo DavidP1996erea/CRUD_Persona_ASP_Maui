@@ -1,0 +1,112 @@
+Entidades
+	clsDepartamento()
+	clsPersona()
+
+DAL
+	clsListaPersonasDAL
+		list<clsPersona>listadoCompletoPersonasDAL()
+	clsManejadoraPersonaDAL
+		int insertarPersonaDAL(clsPersona)
+		int editarPersonaDAL(clsPersona)
+		int borrarPersonaDAL(clsPersona)
+			
+			Para ASP
+				clsPersona buscarPersonaPorIdDAL(int id)
+
+	clsListaDepartamentosDAL
+		list<clsDepartamento>listadoCompletoDepartamentosDAL()
+	clsManejadoraDepartamentoDAL
+		int insertarDepartamentoDAL(clsDepartamento)
+		int editarDepartamentoDAL(clsDepartamento)
+		int borrarDepartamentoDAL(clsDepartamento)
+
+			Para ASP
+				clsDepartamento buscarDepartamentoPorIdDAL(int id)
+
+
+BL
+
+	clsListaPersonasBL
+		list<clsPersona>listadoCompletoPersonasBL()
+	clsManejadoraPersonaBL
+		int insertarPersonaBL(clsPersona)
+		int editarPersonaBL(clsPersona)
+		int borrarPersonaBL(clsPersona)
+			
+			Para ASP
+				clsPersona buscarPersonaPorIdBL(int id)
+
+	clsListaDepartamentosBL
+		list<clsDepartamento>listadoCompletoDepartamentosBL()
+	clsManejadoraDepartamentoBL
+		int insertarDepartamentoBL(clsDepartamento)
+		int editarDepartamentoBL(clsDepartamento)
+		int borrarDepartamentoBL(clsDepartamento)
+
+			Para ASP
+				clsDepartamento buscarDepartamentoPorIdBL(int id)
+
+
+Maui
+
+	Model
+		clsPersonasConNombreDepartamento
+
+	ViewModel
+		clsListaPersonasVM
+			list backup
+			list<clsPersonasConNombreDepartamento> listaCompletaPersonasVM
+			clsPersonasConNombreDepartamento personaSeleccionada
+			String buscarPersona
+			irVistaEditarCommand()
+			irVistaInsertarCommand()
+			borrarCommand()
+			buscarPersona()
+			
+	  	clsEditarPersonaVM
+			list<clsDepartamento> listaCompletaDepartamentos
+			clsPersona personaSeleccionada
+		   	editarPersonaCommand()
+
+		clsInsertarPersonaVM
+			list<clsDepartamento> listaCompletaDepartamentos
+		   	insertarPersonaCommand()
+
+			
+				//////////////////////////////////////////
+						lo mismo pero con departamentos
+
+
+
+
+
+
+
+
+ASP
+	Controllers
+		HomeController
+			Action Index()	-> Mostrará dos enlaces para ir a personas y departamentos
+		PersonasController
+			Action Index() 
+				return View(listadoCompletoPersonasBL)
+
+			Action Insertar()
+				return View (clsPersona)
+			[HTTPOST]
+			Action InsertarPost(clsPersona)
+
+				
+			Action Editar()
+				return View (editarVM)
+
+			[HTTPOST]
+			Action EditarPost(clsPersona persona)
+
+		DepartamentosController
+
+	
+	VIEWMODEL (modelos en ASP)
+		editarVM
+			clsPersona persona
+			List<clsDepartamento> listadoDepartamento
