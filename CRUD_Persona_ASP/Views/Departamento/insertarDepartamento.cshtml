@@ -2,9 +2,12 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-
     @model CRUD_Persona_Entidades.clsDepartamento
 }
 
-<label> @Model.ID</label>
-<label> @Model.Nombre</label>
+
+<form method="post">
+    <label >Introduzca un nombre: </label>
+    <input name="Nombre"> </input>
+    <input type="submit" />
+</form>

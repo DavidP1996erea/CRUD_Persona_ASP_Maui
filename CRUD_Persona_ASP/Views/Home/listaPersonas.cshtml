@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRUD_Persona_Entidades.clsPersona>
+﻿@model IEnumerable<CRUD_Persona_ASP.Models.clsPersonasConNombreDepartamento>
 
 @{
     ViewData["Title"] = "listaPersonas";
@@ -7,11 +7,12 @@
 <h1>listaPersonas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="insertarPersona" asp-controller="Persona">Insertar persona</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+           
             <th>
                 @Html.DisplayNameFor(model => model.ID)
             </th>
@@ -34,7 +35,7 @@
                 @Html.DisplayNameFor(model => model.FechaNacimiento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IDDepartamento)
+                @Html.DisplayNameFor(model => model.nombreDepartamento)
             </th>
             <th></th>
         </tr>
@@ -42,6 +43,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.ID)
             </td>
@@ -63,13 +65,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaNacimiento)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreDepartamento)
+                </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IDDepartamento)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Editar", "editarPersona", "Persona", new {  id=item.ID }) | 
+                @Html.ActionLink("Borrar", "borrarPersona", "Persona", new {  id=item.ID })
             </td>
         </tr>
 }

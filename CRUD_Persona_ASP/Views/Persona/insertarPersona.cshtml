@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model CRUD_Persona_ASP.Models.ViewModel.insertarPersonaVM
+}
+<!-- Se crea un formulario para poder recoger los datos para editar la persona -->
+<form method="post">
+
+<input name="Nombre" > </input>
+<input name="Apellidos" ></input>
+<input name="Direccion" > </input>
+<input name="Telefono"> </input>
+<input name="Foto"> </input>
+<input name="FechaNacimiento"> </input>
+
+<!-- Se crea un select con un bucle dentro para poder mostrar todos los departamentos -->
+<select id="IDDepartamento" name="IDDepartamento">
+        @{
+            for (int i = 0; i < Model.ListadoDepartamentos.Count(); i++)
+            {
+                        <option value=@Model.ListadoDepartamentos[i].ID> @Model.ListadoDepartamentos[i].Nombre </option>
+            }
+        }
+
+</select>
+
+<input type="submit" />
+</form>
