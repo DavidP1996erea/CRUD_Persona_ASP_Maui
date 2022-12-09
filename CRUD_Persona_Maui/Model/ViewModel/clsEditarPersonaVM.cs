@@ -22,17 +22,10 @@ namespace CRUD_Persona_Maui.Model.ViewModel.EditarPersona
         private ObservableCollection<clsDepartamento> litaDepartamentosCompleta = new ObservableCollection<clsDepartamento>(clsListaDepartamentoBL.listadoCompletoDepartamentosBL());
         private DelegateCommand editarPersonaCommand;
         private clsDepartamento departamentoRecogido;
-        private int mostrarDepartamento;
         #endregion
 
 
         #region Propiedades
-        public int MostrarDepartamento
-        {
-            get { 
-                return mostrarDepartamento; }
-            set { mostrarDepartamento = value; }
-        }
         public clsDepartamento DepartamentoRecogido
         {
             get { return departamentoRecogido; }
@@ -52,7 +45,7 @@ namespace CRUD_Persona_Maui.Model.ViewModel.EditarPersona
                                                              
                 // Se llama al canExecute
                 editarPersonaCommand.RaiseCanExecuteChanged();
-                mostrarDepartamentoDePersona();
+              
                 NotifyPropertyChanged();
             }
 
@@ -137,27 +130,7 @@ namespace CRUD_Persona_Maui.Model.ViewModel.EditarPersona
 
 
 
-        /// <summary>
-        /// Como los ids en la base de datos no están en orden, a veces falla
-        /// en el picker. Por lo tanto, para que muestre correctamente el 
-        /// departamento de la persona, se recoge en que indice de la lista 
-        /// está.
-        /// </summary>
       
-        public void mostrarDepartamentoDePersona()
-        {
-            for(int i=0; i < ListaDepartamentosCompleta.Count; i++)
-            {
-               if(ListaDepartamentosCompleta[i].ID == PersonaRecogida.IDDepartamento+1)
-                {
-                    MostrarDepartamento = i;
-                    NotifyPropertyChanged("MostrarDepartamento");
-                }
-            }
-
-         
-
-        }
 
 
     }

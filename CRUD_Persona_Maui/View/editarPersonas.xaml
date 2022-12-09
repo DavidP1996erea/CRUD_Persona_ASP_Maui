@@ -73,7 +73,7 @@
             x:Name="seleccionDepartamento"
             ItemsSource="{Binding ListaDepartamentosCompleta}"
             ItemDisplayBinding="{Binding Nombre}"
-            SelectedIndex="{Binding MostrarDepartamento}"
+            SelectedIndex="{Binding PersonaRecogida.IDDepartamento}"
             SelectedItem="{Binding DepartamentoRecogido}"
             Margin="0,20,0,0"
             VerticalOptions="Center" 
