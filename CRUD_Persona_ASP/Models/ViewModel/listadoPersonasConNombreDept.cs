@@ -24,6 +24,7 @@ namespace CRUD_Persona_ASP.Models.ViewModel
         public listadoPersonasConNombreDept() {
 
             generarLista();
+            obtenerPersonaPorId(13);
         }
         #endregion
 
@@ -74,6 +75,29 @@ namespace CRUD_Persona_ASP.Models.ViewModel
                 }
             }
             return nombreDepartamento;
+        }
+
+
+
+        public clsPersonasConNombreDepartamento obtenerPersonaPorId(int id)
+        {
+
+            clsPersonasConNombreDepartamento personaEnviar = new clsPersonasConNombreDepartamento();
+
+
+            for(int i =0; i< listadoPersonasConNombreDepartamento.Count; i++)
+            {
+
+                if (listadoPersonasConNombreDepartamento[i].ID == id)
+                {
+                    personaEnviar = listadoPersonasConNombreDepartamento[i];
+                }
+
+            }
+
+
+
+            return personaEnviar;
         }
     }
 }

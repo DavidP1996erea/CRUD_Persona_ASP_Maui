@@ -24,5 +24,10 @@ namespace CRUD_Persona_BL
         {
             return clsManejadoraPersonasDAL.eliminarPersona(idPersonaEliminar);
         }
+
+        public static clsPersona selectPersonaBL(int idPersonaSeleccionar)
+        {
+            return clsManejadoraPersonasDAL.selectPersonaDAL(idPersonaSeleccionar);
+        }
     }
 }

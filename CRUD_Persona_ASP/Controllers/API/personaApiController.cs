@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD_Persona_ASP.Controllers.API
 {
-    [Route("api/[controller]")]
+    [Route("api/personasApi")]
     [ApiController]
     public class personaApiController : ControllerBase
     {
@@ -20,27 +20,30 @@ namespace CRUD_Persona_ASP.Controllers.API
 
         // GET api/<personaApiController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public clsPersona Get(int id)
         {
-            return clsManejadoraPersonaBL.";
+            return clsManejadoraPersonaBL.selectPersonaBL(id);
         }
 
         // POST api/<personaApiController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public int Post([FromBody] clsPersona personaInsertar)
         {
+            return clsManejadoraPersonaBL.insertarPersonaBL(personaInsertar);
         }
 
         // PUT api/<personaApiController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public int Put(int id, [FromBody] clsPersona personaUpdate)
         {
+            return clsManejadoraPersonaBL.editarPersonaBL(personaUpdate);
         }
 
         // DELETE api/<personaApiController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public int Delete(int id)
         {
+            return clsManejadoraPersonaBL.eliminarPersonaBL(id);
         }
     }
 }

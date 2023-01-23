@@ -148,5 +148,73 @@ namespace CRUD_Persona_DAL
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static clsPersona selectPersonaDAL(int idPersonaSeleccionar)
+        {
+
+
+            clsMyConnection conexion = new clsMyConnection();
+            SqlConnection miConexion = new SqlConnection();
+            SqlCommand comandoSelect = new SqlCommand();
+            SqlDataReader lectorPersonas;
+            clsPersona persona = new clsPersona(); ;
+
+            // Se crean los parámetros
+            comandoSelect.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = idPersonaSeleccionar;
+            try
+            {
+                miConexion = conexion.getConnection();
+                comandoSelect.CommandText = "SELECT * FROM Personas  WHERE ID=@id ";
+                comandoSelect.Connection = miConexion;
+                lectorPersonas = comandoSelect.ExecuteReader();
+
+                if (lectorPersonas.HasRows)
+                {
+                    while (lectorPersonas.Read())
+                    {
+
+                        persona.ID = (int)lectorPersonas["ID"];
+                        persona.Nombre = (string)lectorPersonas["Nombre"];
+                        persona.Apellidos = (string)lectorPersonas["Apellidos"];
+                        persona.Telefono = (string)lectorPersonas["Telefono"];
+                        persona.Direccion = (string)lectorPersonas["Direccion"];
+                        persona.Foto = (string)lectorPersonas["Foto"];
+                        persona.FechaNacimiento = (DateTime)lectorPersonas["FechaNacimiento"];
+                        /* Como el picker empieza en 0 y los valores de id de la base de datos comienzan en 1,
+                         * se le resta uno para que coincidan los valores. Con esta comprobación se evita que 
+                         * la aplicación no muestre la lista de personas cuando uno de los departamentos
+                         * es nulo
+                         */
+
+                        if (lectorPersonas["IDDepartamento"] == System.DBNull.Value)
+                        {
+                            persona.IDDepartamento = -1;
+                        }
+                        else
+                        {
+                            persona.IDDepartamento = ((int)lectorPersonas["IDDepartamento"]) - 1;
+
+                        }
+                    }
+
+                }
+
+                lectorPersonas.Close();
+                miConexion.Close();
+            }
+            catch (SqlException exSql)
+            {
+
+                throw exSql;
+            }
+
+            return persona;
+
+
+        }
     }
 }
