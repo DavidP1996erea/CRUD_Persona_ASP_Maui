@@ -128,5 +128,56 @@ namespace CRUD_Persona_DAL
         }
 
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static clsDepartamento selectDepartamentoDAL(int idDepartamentoSeleccionar)
+        {
+
+
+            clsMyConnection conexion = new clsMyConnection();
+            SqlConnection miConexion = new SqlConnection();
+            SqlCommand comandoSelect = new SqlCommand();
+            SqlDataReader lectorDepartamentos;
+            clsDepartamento departamento= new clsDepartamento(); ;
+
+            // Se crean los parámetros
+            comandoSelect.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = idDepartamentoSeleccionar;
+            try
+            {
+                miConexion = conexion.getConnection();
+                comandoSelect.CommandText = "SELECT * FROM Departamentos  WHERE ID=@id ";
+                comandoSelect.Connection = miConexion;
+                lectorDepartamentos = comandoSelect.ExecuteReader();
+
+                if (lectorDepartamentos.HasRows)
+                {
+                    while (lectorDepartamentos.Read())
+                    {
+
+                        departamento.ID = (int)lectorDepartamentos["ID"];
+                        departamento.Nombre = (string)lectorDepartamentos["Nombre"];
+                   
+                    }
+
+                }
+
+                lectorDepartamentos.Close();
+                miConexion.Close();
+            }
+            catch (SqlException exSql)
+            {
+
+                throw exSql;
+            }
+
+            return departamento;
+
+
+        }
+
     }
 }

@@ -55,7 +55,7 @@ namespace CRUD_Persona_ASP.Controllers
             {
                 clsManejadoraDepartamentosBL.insertarDepartamentoBL(departamento);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return RedirectToAction("paginaError", "Home");
             }

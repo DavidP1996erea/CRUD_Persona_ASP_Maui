@@ -43,7 +43,7 @@ namespace CRUD_Persona_ASP.Controllers
             {
                 listaDepartamentos = clsListaDepartamentoBL.listadoCompletoDepartamentosBL();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Si hubo algún error se irá a una página error
                 return RedirectToAction("paginaError", "Home");

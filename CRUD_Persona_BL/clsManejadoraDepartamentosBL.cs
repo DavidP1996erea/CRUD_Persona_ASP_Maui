@@ -25,5 +25,11 @@ namespace CRUD_Persona_BL
         {
             return clsManejadoraDepartamentoDAL.eliminarDepartamento(departamentoEliminar);
         }
+
+
+        public static clsDepartamento selectDepartamentoPorIdBL(int id)
+        {
+            return clsManejadoraDepartamentoDAL.selectDepartamentoDAL(id);
+        }
     }
 }
