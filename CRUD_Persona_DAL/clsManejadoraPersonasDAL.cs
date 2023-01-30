@@ -83,7 +83,7 @@ namespace CRUD_Persona_DAL
             comandoInsert.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = personaInsertar.Direccion;
             comandoInsert.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = personaInsertar.Foto;
             comandoInsert.Parameters.Add("@fechaNacimiento", System.Data.SqlDbType.Date).Value = personaInsertar.FechaNacimiento;
-            comandoInsert.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = personaInsertar.IDDepartamento;
+            comandoInsert.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = personaInsertar.IDDepartamento+1;
 
             // Variable que devolverá el número de filas afectadas
             int numeroFilasAfectadas = 0;
