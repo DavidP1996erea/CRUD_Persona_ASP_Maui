@@ -33,7 +33,7 @@ namespace CRUD_Persona_DAL
             comandoInsert.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = personaModificada.Foto;
             comandoInsert.Parameters.Add("@fechaNacimiento", System.Data.SqlDbType.Date).Value = personaModificada.FechaNacimiento;
             // Aquí se le suma 1 al id del departamento porque el picker empieza en 0 y no en 1
-            comandoInsert.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = personaModificada.IDDepartamento;
+            comandoInsert.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = personaModificada.IDDepartamento+1;
 
             // Variable que devolverá el número de filas afectadas
             int numeroFilasAfectadas=0;

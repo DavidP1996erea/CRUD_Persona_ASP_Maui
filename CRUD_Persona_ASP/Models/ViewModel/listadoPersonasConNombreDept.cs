@@ -68,7 +68,7 @@ namespace CRUD_Persona_ASP.Models.ViewModel
             for (int i = 0; i < listaDepartamentos.Count; i++)
             {
 
-                if ((persona.IDDepartamento + 1) == listaDepartamentos[i].ID)
+                if ((persona.IDDepartamento+1) == listaDepartamentos[i].ID)
                 {
                     nombreDepartamento = listaDepartamentos[i].Nombre;
                 }

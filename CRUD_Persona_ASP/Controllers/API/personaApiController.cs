@@ -36,6 +36,7 @@ namespace CRUD_Persona_ASP.Controllers.API
         [HttpPut("{id}")]
         public int Put(int id, [FromBody] clsPersona personaUpdate)
         {
+            personaUpdate.ID= id;
             return clsManejadoraPersonaBL.editarPersonaBL(personaUpdate);
         }
 

@@ -1,4 +1,5 @@
-﻿using CRUD_Persona_ASP.Models.ViewModel;
+﻿using CRUD_Persona_ASP.Models;
+using CRUD_Persona_ASP.Models.ViewModel;
 using CRUD_Persona_BL;
 using CRUD_Persona_DAL;
 using CRUD_Persona_Entidades;
@@ -14,14 +15,14 @@ namespace CRUD_Persona_ASP.Controllers.API
     {
         // GET: api/<personaApiController>
         [HttpGet]
-        public IEnumerable<listadoPersonasConNombreDept> Get()
+        public IEnumerable<clsPersonasConNombreDepartamento> Get()
         {
             listadoPersonasConNombreDept personasConDpt = new listadoPersonasConNombreDept();
 
-            
-            return (IEnumerable<listadoPersonasConNombreDept>)personasConDpt.ListadoPersonasConNombreDepartamento;
+
+            return (IEnumerable<clsPersonasConNombreDepartamento>)(personasConDpt.ListadoPersonasConNombreDepartamento);
         }
 
-        
+
     }
 }
